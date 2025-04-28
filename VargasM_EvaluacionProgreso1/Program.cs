@@ -1,3 +1,6 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using VargasM_EvaluacionProgreso1.Data;
 namespace VargasM_EvaluacionProgreso1
 {
     public class Program
@@ -5,6 +8,8 @@ namespace VargasM_EvaluacionProgreso1
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<VargasM_EvaluacionProgreso1Context>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("VargasM_EvaluacionProgreso1Context") ?? throw new InvalidOperationException("Connection string 'VargasM_EvaluacionProgreso1Context' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

@@ -17,9 +17,5 @@ namespace VargasM_EvaluacionProgreso1.Models
         [DataType(DataType.Currency)]
         [Range(0, double.MaxValue, ErrorMessage = "El valor debe ser positivo")]
         public decimal ValorAPagar { get; set; }
-
-        // Relación con Cliente
-        public int ClienteId { get; set; }
-        public Cliente Cliente { get; set; }
     }
 }
