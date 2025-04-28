@@ -15,5 +15,7 @@ namespace VargasM_EvaluacionProgreso1.Data
         }
 
         public DbSet<VargasM_EvaluacionProgreso1.Models.Clientes> Clientes { get; set; } = default!;
+        public DbSet<VargasM_EvaluacionProgreso1.Models.Reserva> Reserva { get; set; } = default!;
+        public DbSet<VargasM_EvaluacionProgreso1.Models.PlanDeRecompensas> PlanDeRecompensas { get; set; } = default!;
     }
 }

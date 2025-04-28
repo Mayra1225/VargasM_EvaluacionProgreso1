@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+
+using System.Globalization;
 using VargasM_EvaluacionProgreso1.Data;
+
 namespace VargasM_EvaluacionProgreso1
 {
     public class Program
@@ -10,9 +13,17 @@ namespace VargasM_EvaluacionProgreso1
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<VargasM_EvaluacionProgreso1Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("VargasM_EvaluacionProgreso1Context") ?? throw new InvalidOperationException("Connection string 'VargasM_EvaluacionProgreso1Context' not found.")));
-
+           
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var cultureInfo = new CultureInfo("es-ES");
+            cultureInfo.NumberFormat.CurrencyDecimalSeparator = ".";
+            cultureInfo.NumberFormat.NumberDecimalSeparator = ".";
+
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
 
             var app = builder.Build();
 

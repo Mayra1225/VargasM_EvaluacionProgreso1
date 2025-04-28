@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VargasM_EvaluacionProgreso1.Data;
 
@@ -11,9 +12,11 @@ using VargasM_EvaluacionProgreso1.Data;
 namespace VargasM_EvaluacionProgreso1.Migrations
 {
     [DbContext(typeof(VargasM_EvaluacionProgreso1Context))]
-    partial class VargasM_EvaluacionProgreso1ContextModelSnapshot : ModelSnapshot
+    [Migration("20250428133000_Migracion Inicial")]
+    partial class MigracionInicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

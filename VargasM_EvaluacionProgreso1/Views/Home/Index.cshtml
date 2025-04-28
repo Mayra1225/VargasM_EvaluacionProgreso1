@@ -3,6 +3,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE8OOO_EpA4ehPYYaSCfFkE-MtJ7x2-QfQZQ&s" alt="Meme" style="width:400px; height:500px;">
+    <input type="text" id="campoTexto" class="form-control mb-3" placeholder="Escribe algo...">
+    <button class="btn btn-outline-info btn-lg" onclick="mostrarAlerta()">Mostrar Alerta</button>
+
+    @section Scripts {
+        <script>
+            function mostrarAlerta() {
+                var texto = document.getElementById('campoTexto').value;
+                alert("Mi nombre es Mayra Vargas, mi hobbie es viajar y el valor del campo de texto es: " + texto);
+            }
+        </script>
+    }
 </div>

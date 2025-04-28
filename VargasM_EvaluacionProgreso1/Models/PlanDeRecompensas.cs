@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VargasM_EvaluacionProgreso1.Models
 {
@@ -22,5 +23,9 @@ namespace VargasM_EvaluacionProgreso1.Models
                 return PuntosAcumulados >= 500 ? "GOLD" : "SILVER";
             }
         }
+
+        public int ReservaId { get; set; }
+        [ForeignKey("ReservaId")]
+        public Reserva Reserva { get; set; }
     }
 }

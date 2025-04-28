@@ -15,6 +15,7 @@ namespace VargasM_EvaluacionProgreso1.Models
 
         [DataType(DataType.Currency)]
         [Range(0.0, 10000.0, ErrorMessage = "El saldo debe estar entre 0 y 10,000")]
+        [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
         public decimal Saldo { get; set; }
 
         public bool EsVIP { get; set; }
