@@ -23,6 +23,6 @@ namespace VargasM_EvaluacionProgreso1.Models
         // Relación con Cliente
         public int ClientesId { get; set; }
         [ForeignKey("ClientesId")]
-        public Clientes Clientes { get; set; }
+        public Clientes? Clientes { get; set; }
     }
 }

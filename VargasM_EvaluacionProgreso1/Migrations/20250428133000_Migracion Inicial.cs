@@ -13,7 +13,7 @@ namespace VargasM_EvaluacionProgreso1.Migrations
         {
             migrationBuilder.CreateTable(
                 name: "Clientes",
-                columns: table => new
+                columns:     table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -47,7 +47,7 @@ namespace VargasM_EvaluacionProgreso1.Migrations
                         column: x => x.ClientesId,
                         principalTable: "Clientes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,7 +69,7 @@ namespace VargasM_EvaluacionProgreso1.Migrations
                         column: x => x.ReservaId,
                         principalTable: "Reserva",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

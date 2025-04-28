@@ -22,7 +22,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
         // GET: PlanDeRecompensas
         public async Task<IActionResult> Index()
         {
-            var vargasM_EvaluacionProgreso1Context = _context.PlanDeRecompensas.Include(p => p.Reserva);
+            var vargasM_EvaluacionProgreso1Context = _context.PlanDeRecompensas.Include(p => p.Clientes);
             return View(await vargasM_EvaluacionProgreso1Context.ToListAsync());
         }
 
@@ -35,7 +35,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
             }
 
             var planDeRecompensas = await _context.PlanDeRecompensas
-                .Include(p => p.Reserva)
+                .Include(p => p.Clientes)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (planDeRecompensas == null)
             {
@@ -48,7 +48,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
         // GET: PlanDeRecompensas/Create
         public IActionResult Create()
         {
-            ViewData["ReservaId"] = new SelectList(_context.Reserva, "Id", "Id");
+            ViewData["ClientesId"] = new SelectList(_context.Clientes, "Id", "Nombre");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,FechaInicio,PuntosAcumulados,ReservaId")] PlanDeRecompensas planDeRecompensas)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,FechaInicio,PuntosAcumulados,ClientesId")] PlanDeRecompensas planDeRecompensas)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ReservaId"] = new SelectList(_context.Reserva, "Id", "Id", planDeRecompensas.ReservaId);
+            ViewData["ClientesId"] = new SelectList(_context.Clientes, "Id", "Nombre", planDeRecompensas.ClientesId);
             return View(planDeRecompensas);
         }
 
@@ -82,7 +82,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
             {
                 return NotFound();
             }
-            ViewData["ReservaId"] = new SelectList(_context.Reserva, "Id", "Id", planDeRecompensas.ReservaId);
+            ViewData["ClientesId"] = new SelectList(_context.Clientes, "Id", "Nombre", planDeRecompensas.ClientesId);
             return View(planDeRecompensas);
         }
 
@@ -91,7 +91,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,FechaInicio,PuntosAcumulados,ReservaId")] PlanDeRecompensas planDeRecompensas)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,FechaInicio,PuntosAcumulados,ClientesId")] PlanDeRecompensas planDeRecompensas)
         {
             if (id != planDeRecompensas.Id)
             {
@@ -118,7 +118,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ReservaId"] = new SelectList(_context.Reserva, "Id", "Id", planDeRecompensas.ReservaId);
+            ViewData["ClientesId"] = new SelectList(_context.Clientes, "Id", "Nombre", planDeRecompensas.ClientesId);
             return View(planDeRecompensas);
         }
 
@@ -131,7 +131,7 @@ namespace VargasM_EvaluacionProgreso1.Controllers
             }
 
             var planDeRecompensas = await _context.PlanDeRecompensas
-                .Include(p => p.Reserva)
+                .Include(p => p.Clientes)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (planDeRecompensas == null)
             {

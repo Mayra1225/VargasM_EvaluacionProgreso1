@@ -24,8 +24,9 @@ namespace VargasM_EvaluacionProgreso1.Models
             }
         }
 
-        public int ReservaId { get; set; }
-        [ForeignKey("ReservaId")]
-        public Reserva Reserva { get; set; }
+        // Relación con Cliente
+        public int ClientesId { get; set; }
+        [ForeignKey("ClientesId")]
+        public Clientes? Clientes { get; set; }
     }
 }
